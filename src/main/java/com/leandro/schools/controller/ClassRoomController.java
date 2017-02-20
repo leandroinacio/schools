@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.leandro.schools.model.ClassRoom;
+import com.leandro.schools.model.Topic;
 import com.leandro.schools.repository.ClassRoomRepo;
 
 @Controller
@@ -27,13 +28,13 @@ public class ClassRoomController {
 	}
 	
 	@PostMapping("/insertClass")
-	public @ResponseBody ClassRoom insertClass(String name) {
-		ClassRoom classRoom = new ClassRoom(0L, name, 0L);
+	public @ResponseBody ClassRoom insertClass(String name, Topic topic) {
+		ClassRoom classRoom = new ClassRoom(0L, name, topic);
 		return classRoomRepo.save(classRoom);
 	}
 	
 	@PostMapping("/updateClass")
-	public @ResponseBody ClassRoom updateClass(Long id, String name, Long topic) {
+	public @ResponseBody ClassRoom updateClass(Long id, String name, Topic topic) {
 		ClassRoom classRoom = classRoomRepo.findOne(id);
 		classRoom.setName(name);
 		classRoom.setTopic(topic);

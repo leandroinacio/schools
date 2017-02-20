@@ -1,9 +1,16 @@
 package com.leandro.schools.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -12,16 +19,25 @@ public class Question implements Serializable{
 
 	public static final long serialVersionUID = 1L;
 	
+	@Id
 	private Long id;
 	private String question;
-	private List<String> options;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "topic_id")
+    private Topic topic;
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "question",fetch = FetchType.EAGER)
+    private List<Option> options;
 	
 	public Question() {
 		super();
+		this.options = new ArrayList<>();
+		
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Question(Long id, String question, List<String> options) {
+	public Question(Long id, String question, List<Option> options) {
 		super();
 		this.id = id;
 		this.question = question;
@@ -44,11 +60,11 @@ public class Question implements Serializable{
 		this.question = question;
 	}
 
-	public List<String> getOptions() {
+	public List<Option> getOptions() {
 		return options;
 	}
 
-	public void setOptions(List<String> options) {
+	public void setOptions(List<Option> options) {
 		this.options = options;
 	}
 

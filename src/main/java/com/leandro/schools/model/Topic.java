@@ -1,8 +1,13 @@
 package com.leandro.schools.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -11,8 +16,12 @@ public class Topic implements Serializable{
 
 	public static final long serialVersionUID = 1L;
 	
+	@Id
 	private Long id;
 	private String name;
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "topic",fetch = FetchType.EAGER)
+    private List<Question> questions;
 	
 	public Topic() {
 		super();

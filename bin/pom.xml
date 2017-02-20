@@ -4,10 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.leandro</groupId>
-	<artifactId>schools</artifactId>
+	<artifactId>gestao-festa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
+	<name>gestao-festa</name>
 	<description></description>
 
 	<parent>
@@ -30,6 +31,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
@@ -49,15 +54,15 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.7</version>
+		</dependency>
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-	        <groupId>org.springframework.boot</groupId>
-	        <artifactId>spring-boot-starter-tomcat</artifactId>
-        	<scope>provided</scope>
-    	</dependency>
 	</dependencies>
 
 	<build>
@@ -70,5 +75,4 @@
 	</build>
 
 
-	<name>schools</name>
 </project>
