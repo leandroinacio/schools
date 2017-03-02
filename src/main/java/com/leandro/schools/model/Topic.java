@@ -28,7 +28,7 @@ public class Topic implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Topic(Long id, String name, Long topic) {
+	public Topic(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
